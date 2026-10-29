@@ -72,8 +72,8 @@ export function Contact() {
         </div>
         <form id="contactForm" noValidate onSubmit={submit}>
           <div className="row2">
-            <div className="field"><label htmlFor="cName">Name</label><input id="cName" name="cName" required placeholder="Ada Lovelace" autoComplete="name" /></div>
-            <div className="field"><label htmlFor="cEmail">Email</label><input id="cEmail" name="cEmail" type="email" required placeholder="ada@company.com" autoComplete="email" /></div>
+            <div className="field"><label htmlFor="cName">Name</label><input id="cName" name="cName" required placeholder="Joe Goldberg" autoComplete="name" /></div>
+            <div className="field"><label htmlFor="cEmail">Email</label><input id="cEmail" name="cEmail" type="email" required placeholder="joe@company.com" autoComplete="email" /></div>
           </div>
           <div className="field"><label htmlFor="cTopic">What's it about?</label>
             <select id="cTopic" name="cTopic"><option>A full-time role</option><option>A freelance project</option><option>3D / character work</option><option>Just saying hi</option></select></div>
