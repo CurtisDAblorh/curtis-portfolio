@@ -1,5 +1,10 @@
 export type Highlight = { num: string; text: string };
-export type Role = { co: string; title: string; badge: string; date: string; highlights?: Highlight[]; points: string[] };
+export type RoleSection = { label: string; points: string[] };
+/**
+ * `points` is the main list. A long role can add `sections`: it then shows as tabs, with "Highlights"
+ * (the highlight boxes and `points`) first and one tab per section.
+ */
+export type Role = { co: string; title: string; badge: string; date: string; highlights?: Highlight[]; points: string[]; sections?: RoleSection[] };
 
 // `num` may contain <s> markup for a struck-through "before" value
 export const experiences: Role[] = [
@@ -9,23 +14,46 @@ export const experiences: Role[] = [
       { num: "−40%", text: "Render times on the slowest views, found with PostHog and fixed with memoisation and lazy loading." },
       { num: "<s>22</s> → 14 min", text: "Re-engineered the CI pipeline, cutting E2E build times by around 35%." },
     ],
+    // the most important work, shown first under "Highlights"
     points: [
       "Owned features end to end across the experiment documentation app, AI monitoring views and live lab streaming, used by 10+ customer organisations. Ran discovery sessions with scientists and product owners, then prototyped in Figma and shipped.",
-      "Worked cross-functionally with designers, product managers, marketing and sales to turn requirements into polished features.",
-      "Created and maintained the shared design system and component library in Storybook, with visual regression testing in Chromatic.",
       "Redesigned the human-in-the-loop audit flow after users found it confusing, so reviewers could check each completed protocol step, sign approvals and dispute errors made by the AI.",
-      "Built an in-app guided onboarding system with driver.js, walking new users through key workflows step by step.",
-      "Integrated REST and GraphQL APIs, with TanStack Query for REST data, Apollo Client for GraphQL and Redux for app state.",
-      "Built real-time views with custom D3 components driven by live WebSocket streams, plus filterable TanStack Table data tables.",
-      "Architected full-stack solutions across React, Go and PostgreSQL, and built a Node.js and Express backend-for-frontend layer.",
-      "Proposed and led the Kubb rollout, generating type-safe API clients from the OpenAPI spec to keep the front end and back end in sync.",
-      "Used PostHog to spot slow views, then cut their render times by 40% with memoisation and lazy loading.",
       "Resolved a live incident where rendering too many live-capture values stopped AI-assisted experiments from running, by paginating the data and caching the pages around the visible time range.",
-      "Improved accessibility with semantic HTML, ARIA and axe audits, and led the move to a fully responsive web app, delegating pages to developers based on their strengths.",
-      "Set the unit, E2E and visual test strategy with Jest, React Testing Library and Playwright.",
-      "Added OAuth and JWT login plus role-based access control for the multi-tenant platform.",
-      "Set team standards with ESLint, Prettier, CLAUDE.md files and Claude Code skills for reviewing human and agent-generated code.",
-      "Handled front-end releases on AWS behind PostHog feature flags, led code reviews, mentored developers and wrote technical docs.",
+      "Proposed and led the Kubb rollout, generating type-safe API clients from the OpenAPI spec to keep the front end and back end in sync.",
+    ],
+    sections: [
+      {
+        label: "Product & UX",
+        points: [
+          "Worked cross-functionally with designers, product managers, marketing and sales to turn requirements into polished features.",
+          "Built an in-app guided onboarding system with driver.js, walking new users through key workflows step by step.",
+          "Improved accessibility with semantic HTML, ARIA and axe audits, and led the move to a fully responsive web app, delegating pages to developers based on their strengths.",
+        ],
+      },
+      {
+        label: "Frontend & data",
+        points: [
+          "Created and maintained the shared design system and component library in Storybook, with visual regression testing in Chromatic.",
+          "Integrated REST and GraphQL APIs, with TanStack Query for REST data, Apollo Client for GraphQL and Redux for app state.",
+          "Built real-time views with custom D3 components driven by live WebSocket streams, plus filterable TanStack Table data tables.",
+        ],
+      },
+      {
+        label: "Platform",
+        points: [
+          "Architected full-stack solutions across React, Go and PostgreSQL, and built a Node.js and Express backend-for-frontend layer.",
+          "Added OAuth and JWT login plus role-based access control for the multi-tenant platform.",
+          "Handled front-end releases on AWS behind PostHog feature flags, led code reviews, mentored developers and wrote technical docs.",
+        ],
+      },
+      {
+        label: "Performance",
+        points: [
+          "Used PostHog to spot slow views, then cut their render times by 40% with memoisation and lazy loading.",
+          "Set the unit, E2E and visual test strategy with Jest, React Testing Library and Playwright.",
+          "Set team standards with ESLint, Prettier, CLAUDE.md files and Claude Code skills for reviewing human and agent-generated code.",
+        ],
+      },
     ],
   },
   {

@@ -290,3 +290,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 .cover.contain img { object-fit: contain; object-position: center; padding: 6%; }
 /* experience panel content re-mounts per role, which replays the swap animation */
 .exp-body { animation: swap .35s ease; }
+/* tabs inside a long role (Highlights first, then one per area); same pill look as the filter chips */
+.exp-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.exp-tab { font: 600 13px/1 var(--f-body); padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.exp-tab:hover { color: var(--ink); border-color: var(--a1); }
+.exp-tab[aria-selected="true"] { background: var(--a1); color: var(--on-a1); border-color: var(--a1); }
+.exp-tab .n { font-size: 11px; opacity: .65; margin-left: 5px; }
+.exp-tabpanel { animation: swap .35s ease; }
